@@ -46,6 +46,18 @@ app.post('/todo', (req, res) => {
     });
 })
 
+app.delete('/todo/:id', (req, res) => {
+    let id = req.params.id
+    connection.query('DELETE FROM tbl_deskripsi WHERE id=?', [id], function (error, rows, fileds) {
+        if (error) {
+            console.log(error);
+        } else {
+            console.log("berhasil menghapus data data")
+        }
+        res.end()
+    });
+})
+
 app.get('/todo', (req, res) => {
     connection.query('SELECT * FROM tbl_deskripsi', function (error, rows, fileds) {
         if (error) {
