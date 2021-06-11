@@ -1,9 +1,10 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const mysql = require('mysql');
-const { response } = require('express');
+const cors = require('cors');
 
 const app = express()
+app.use(cors())
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -39,7 +40,7 @@ app.post('/todo', (req, res) => {
         if (error) {
             console.log(error);
         } else {
-             console.log("berhasil menambahkan data")
+            console.log("berhasil menambahkan data")
         }
         res.end()
     });
@@ -50,7 +51,7 @@ app.get('/todo', (req, res) => {
         if (error) {
             console.log(error);
         } else {
-             res.json(rows)
+            res.json(rows)
         }
         res.end()
     });
