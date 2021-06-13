@@ -83,6 +83,20 @@ app.get('/user', (req, res) => {
     });
 })
 
+app.post('/user', (req, res) => {
+    let username = req.body.username
+    let password = req.body.password
+    connection.query('INSERT INTO tbl_user (username,password) VALUES(?,?)', [username,password], function (error, rows, fileds) {
+        if (error) {
+            console.log(error);
+        } else {
+            console.log("berhasil menambahkan data")
+        }
+        res.end()
+    });
+})
+
+
 app.listen(3031, function () {
     console.log("Server Berjalan...")
 })
