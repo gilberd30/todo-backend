@@ -22,6 +22,7 @@ connection.connect(function (err) {
 });
 
 
+//TODO
 app.get('/', (req, res) => {
     res.send(`
     <html>
@@ -60,6 +61,19 @@ app.delete('/todo/:id', (req, res) => {
 
 app.get('/todo', (req, res) => {
     connection.query('SELECT * FROM tbl_deskripsi', function (error, rows, fileds) {
+        if (error) {
+            console.log(error);
+        } else {
+            res.json(rows)
+        }
+        res.end()
+    });
+})
+
+// USER
+
+app.get('/user', (req, res) => {
+    connection.query('SELECT * FROM tbl_user', function (error, rows, fileds) {
         if (error) {
             console.log(error);
         } else {
