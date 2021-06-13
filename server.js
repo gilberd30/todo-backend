@@ -9,9 +9,10 @@ app.use(express.json());
 
 
 const todoRoutes = require('./routers/todo')
-//const userRoutes = require('./routes/userRoutes')
+const userRoutes = require('./routers/users')
 
-app.use('/',todoRoutes) //Todo Routes
+app.use('/',todoRoutes) 
+app.use('/user',userRoutes)
 
 app.listen(3031, function () {
     console.log("Server Berjalan...")
