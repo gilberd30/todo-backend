@@ -1,4 +1,4 @@
-const mysql = require('../database/connection')
+const connection = require('../database/connection')
 
 module.exports = function (req, res, next) {
     const username = req.header.username
@@ -7,7 +7,7 @@ module.exports = function (req, res, next) {
     const sql = '"SELECT * FROM tbl_user WHERE username=? AND password=?"'
     const values = [username, password]
 
-    mysql.query(sql, values, (err, results, fields) => {
+    connection.query(sql, values, (err, results, fields) => {
         if (!err) {
             next()
         } else {

@@ -30,7 +30,6 @@ router.post('/', (req, res) => {
         res.json({ values })
     })
 })
-
 router.delete('/:id', auth, (req, res) => {
     const values = [req.params.id]
 
